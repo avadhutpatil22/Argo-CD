@@ -1,0 +1,49 @@
+##############################################################
+# argocd/app-blue.yaml
+# Argo CD Application — Blue slot
+# Apply with: kubectl apply -f argocd/app-blue.yaml -n argocd
+##############################################################
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app-blue
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: my-app
+    deployment.blue-green/slot: blue
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: nginx=nginx
+    argocd-image-updater.argoproj.io/nginx.update-strategy: semver
+    argocd-image-updater.argoproj.io/nginx.allow-tags: "~1.25"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/<your-org>/<your-repo>.git  # <-- update
+    targetRevision: main
+    path: manifests/overlays/blue
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: my-app
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+
+  # Health checks — gate sync on Deployment rollout
+  ignoreDifferences: []
