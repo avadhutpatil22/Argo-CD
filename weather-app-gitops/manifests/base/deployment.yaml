@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: weather-app
-          image: ghcr.io/https://github.com/avadhutpatil22/Argo-CD/weather-app:latest   # update this
+          image: ghcr.io/avadhutpatil22/Argo-CD/weather-app:latest   # update this
           ports:
             - containerPort: 80
           readinessProbe:
