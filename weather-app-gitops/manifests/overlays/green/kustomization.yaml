@@ -21,5 +21,5 @@ patches:
       name: weather-app
 
 images:
-  - name: ghcr.io/avadhutpatil22/Argo-CD/weather-app
+  - name: ghcr.io/avadhutpatil22/weather-app
     newTag: "1.1.0"     # candidate release — green slot
