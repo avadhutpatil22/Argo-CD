@@ -1,0 +1,45 @@
+##############################################################
+# argocd/app-project.yaml
+# Argo CD AppProject scoping both slots
+##############################################################
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: my-app-project
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: "Blue-Green deployment project for my-app"
+
+  sourceRepos:
+    - "https://github.com/<your-org>/<your-repo>.git"  # <-- update
+
+  destinations:
+    - namespace: my-app
+      server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+
+  namespaceResourceWhitelist:
+    - group: "apps"
+      kind: Deployment
+    - group: ""
+      kind: Service
+    - group: ""
+      kind: ConfigMap
+    - group: ""
+      kind: ServiceAccount
+
+  roles:
+    - name: read-only
+      description: Read-only access for auditors
+      policies:
+        - p, proj:my-app-project:read-only, applications, get, my-app-project/*, allow
+    - name: ci-deployer
+      description: CI pipeline can sync apps
+      policies:
+        - p, proj:my-app-project:ci-deployer, applications, sync, my-app-project/*, allow
+        - p, proj:my-app-project:ci-deployer, applications, get, my-app-project/*, allow

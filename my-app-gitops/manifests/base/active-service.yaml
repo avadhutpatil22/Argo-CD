@@ -1,0 +1,25 @@
+##############################################################
+# active-service.yaml
+# This service always points at the LIVE slot.
+# Update the `slot` selector when cutting over.
+##############################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-active
+  namespace: my-app
+  labels:
+    app: my-app
+    role: active
+  annotations:
+    # Convenience annotation — record which slot is active
+    deployment.blue-green/active-slot: "blue"
+spec:
+  selector:
+    app: my-app
+    slot: blue          # <-- change to "green" during cutover
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  type: ClusterIP
