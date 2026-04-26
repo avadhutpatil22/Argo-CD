@@ -11,7 +11,7 @@ metadata:
 spec:
   project: weather-app
   source:
-    repoURL: https://github.com/<your-org>/weather-app-gitops.git
+    repoURL:  https://github.com/avadhutpatil22/Argo-CD/weather-app-gitops.git
     targetRevision: main
     path: manifests/overlays/blue
   destination:
