@@ -54,7 +54,7 @@ async function fetchWeather(city) {
     renderWeather(data);
   } catch (e) {
     // Demo mode if no API key set
-    if (API_KEY === 'YOUR_API_KEY_HERE') {
+    if (API_KEY === 'a98cb9907bac9c215e70f17c6eafc166') {
       renderDemo(city);
     } else {
       showError('Network error. Check your connection.');
