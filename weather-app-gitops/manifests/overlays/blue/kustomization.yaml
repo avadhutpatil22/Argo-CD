@@ -22,4 +22,4 @@ patches:
 
 images:
   - name: ghcr.io/avadhutpatil22/weather-app
-    newTag: "latest"     # stable release — blue slot
+    newTag: "blue"     # stable release — blue slot
