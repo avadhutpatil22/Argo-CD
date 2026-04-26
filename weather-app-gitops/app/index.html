@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skyglass — Weather</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="noise"></div>
+
+  <main class="app">
+    <!-- Header -->
+    <header class="header">
+      <span class="logo">SKY<span class="accent">GLASS</span></span>
+      <div class="slot-badge" id="slotBadge">BLUE</div>
+    </header>
+
+    <!-- Search -->
+    <section class="search-wrap">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input id="cityInput" class="search-input" type="text" placeholder="Enter city name…" autocomplete="off"/>
+        <button id="searchBtn" class="search-btn">GO</button>
+      </div>
+    </section>
+
+    <!-- Weather Card -->
+    <section class="weather-card" id="weatherCard">
+      <div class="card-inner">
+        <div class="city-row">
+          <div>
+            <div class="city-name" id="cityName">—</div>
+            <div class="country" id="countryName">Search for a city</div>
+          </div>
+          <div class="weather-icon" id="weatherIcon">🌤</div>
+        </div>
+
+        <div class="temp-row">
+          <span class="temp" id="tempVal">--</span>
+          <div class="temp-unit-toggle">
+            <button class="unit-btn active" id="btnC" onclick="switchUnit('C')">°C</button>
+            <button class="unit-btn" id="btnF" onclick="switchUnit('F')">°F</button>
+          </div>
+        </div>
+
+        <div class="condition" id="conditionText">—</div>
+
+        <div class="divider"></div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="stat-label">Humidity</span>
+            <span class="stat-val" id="humidity">--%</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Wind</span>
+            <span class="stat-val" id="wind">-- km/h</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Feels Like</span>
+            <span class="stat-val" id="feelsLike">--°</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Visibility</span>
+            <span class="stat-val" id="visibility">-- km</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Error -->
+    <div class="error-msg" id="errorMsg"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      Powered by <a href="https://openweathermap.org" target="_blank">OpenWeatherMap</a>
+      &nbsp;·&nbsp; version <span id="appVersion">1.0.0</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

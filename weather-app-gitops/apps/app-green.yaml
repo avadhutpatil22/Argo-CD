@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: weather-app-green
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: weather-app
+    deployment.blue-green/slot: green
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: weather-app
+  source:
+    repoURL: https://github.com/<your-org>/weather-app-gitops.git
+    targetRevision: main
+    path: manifests/overlays/green
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: weather-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

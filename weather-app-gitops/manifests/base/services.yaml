@@ -1,0 +1,42 @@
+---
+# Routes LIVE production traffic
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather-app-active
+  namespace: weather-app
+  labels:
+    app: weather-app
+    role: active
+  annotations:
+    deployment.blue-green/active-slot: "blue"
+spec:
+  selector:
+    app: weather-app
+    slot: blue
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+---
+# Routes TEST / preview traffic
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather-app-preview
+  namespace: weather-app
+  labels:
+    app: weather-app
+    role: preview
+  annotations:
+    deployment.blue-green/preview-slot: "green"
+spec:
+  selector:
+    app: weather-app
+    slot: green
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  type: ClusterIP
