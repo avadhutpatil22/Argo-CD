@@ -1,7 +1,7 @@
 /* ─── Config ─────────────────────────────────────────────── */
 // Replace with your OpenWeatherMap API key
 // Get one free at https://openweathermap.org/api
-const API_KEY = 'YOUR_API_KEY_HERE';
+const API_KEY = 'a98cb9907bac9c215e70f17c6eafc166';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 /* ─── Slot detection ─────────────────────────────────────── */
