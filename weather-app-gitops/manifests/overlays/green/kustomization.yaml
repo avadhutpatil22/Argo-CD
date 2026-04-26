@@ -22,4 +22,4 @@ patches:
 
 images:
   - name: ghcr.io/avadhutpatil22/weather-app
-    newTag: "latest"     # candidate release — green slot
+    newTag: "green"     # candidate release — green slot
