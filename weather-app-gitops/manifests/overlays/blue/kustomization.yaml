@@ -18,7 +18,7 @@ patches:
         value: weather-app-blue
     target:
       kind: Deployment
-      name: weather-app
+      name: weather-apps
 
 images:
   - name: ghcr.io/avadhutpatil22/weather-app
