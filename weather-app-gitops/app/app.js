@@ -1,7 +1,7 @@
 /* ─── Config ─────────────────────────────────────────────── */
 // Replace with your OpenWeatherMap API key
 // Get one free at https://openweathermap.org/api
-const API_KEY = '826a16bbb524239f564337ec45f9a08c';
+const API_KEY = '2e960445e8994eab7b698e7041488dcf';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 /* ─── Slot detection ─────────────────────────────────────── */
@@ -54,7 +54,7 @@ async function fetchWeather(city) {
     renderWeather(data);
   } catch (e) {
     // Demo mode if no API key set
-    if (API_KEY === '826a16bbb524239f564337ec45f9a08c') {
+    if (API_KEY === '2e960445e8994eab7b698e7041488dcf') {
       renderDemo(city);
     } else {
       showError('Network error. Check your connection.');
