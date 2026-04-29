@@ -8,7 +8,7 @@ metadata:
 spec:
   description: "Blue-Green deployment for Weather App"
   sourceRepos:
-    - "https://github.com/avadhutpatil22/Argo-CD/weather-app-gitops.git"
+    - "https://github.com/avadhutpatil22/Argo-CD.git"
   destinations:
     - namespace: weather-app
       server: https://kubernetes.default.svc
