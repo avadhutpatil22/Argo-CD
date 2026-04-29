@@ -13,10 +13,13 @@ patches:
       - op: replace
         path: /spec/template/metadata/labels/slot
         value: green
+      - op: replace
+        path: /metadata/name
+        value: weather-app-green
     target:
       kind: Deployment
       name: weather-app
 
 images:
   - name: ghcr.io/avadhutpatil22/weather-app
-    newTag: "1.1.0"     # candidate release — green slot
+    newTag: "green"   # candidate release — green slot
