@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: weather-app
+namespace: weather-apps
 
 resources:
   - ../../base
@@ -18,7 +18,7 @@ patches:
         value: weather-app-blue
     target:
       kind: Deployment
-      name: weather-apps
+      name: weather-app
 
 images:
   - name: ghcr.io/avadhutpatil22/weather-app
